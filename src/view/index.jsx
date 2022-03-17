@@ -1,10 +1,9 @@
 import { Component } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import CartAlert from '../components/addCartAlert/CartAlert';
-import CardOptions from '../components/cardOptionsAdd/cardOptions';
+import CardOptions from '../components/cardOptions/cardOptions';
 import CardCustom from '../components/cardProduct/cardCustom';
 import NavBarCustom from '../components/navBar/navBar';
-import api from '../service/api'
+import api from '../service/api';
 
 
 
@@ -14,6 +13,7 @@ class AppInit extends Component {
         products: [],
         ingredients: [],
         extras: [],
+        cart: [],
     }
 
     async componentDidMount() {
@@ -35,8 +35,7 @@ class AppInit extends Component {
     }
 
     render() {
-        const { products } = this.state;
-        const { ingredients } = this.state;
+        const { products, ingredients } = this.state;
 
         return (
             <>
@@ -44,15 +43,16 @@ class AppInit extends Component {
                 <Container>
                     <Row>
                         <Col sm={6}>
-                            {products.map(product => (
-                                <CardCustom key={product.id} nm_product={product.nm_product} description={product.description} vl_price={product.vl_price} vl_discount={product.vl_discount} />
+                            {products.map(({ id, nm_product, description, vl_price, vl_discount }) => (
+                                <CardCustom key={id} nameProduct={nm_product} description={description} valuePrice={vl_price} valueDiscount={vl_discount} />
                             ))},
                         </Col>
                         <Col sm={6}>
                             <CardOptions ingredients={ingredients} />
                         </Col>
                     </Row>
-                    {/* <CartAlert /> */}
+                    {/* <CartAlert /> */} {/* ui do componente do alert da ação de clicar no botão adicionar */}
+
                 </Container>
 
             </>

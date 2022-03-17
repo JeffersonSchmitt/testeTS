@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import React from 'react';
+import { styled, alpha, InputBase } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -41,7 +40,6 @@ export default function SearchCustom() {
             <StyledInputBase
                 style={{ textAlign: 'center' }}
                 placeholder="Busque por estabelecimento ou produtos"
-                inputProps={{ 'aria-label': 'Busque por estabelecimento ou produtos' }}
             />
         </Search>
     );
